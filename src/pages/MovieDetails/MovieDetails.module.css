@@ -1,0 +1,71 @@
+.homelink {
+  font-size: 20px;
+  color: black;
+  filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.578));
+  font-weight: bold;
+  max-width: fit-content;
+  margin: 1em;
+  background-color: none;
+  font-weight: 700;
+  left: 50px;
+  top: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.backArrow {
+  max-width: 30px;
+  float: left;
+  filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.578));
+}
+
+.homelink a:hover {
+  transform: translateX(5px);
+}
+
+.homelink a {
+  transform-origin: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.moviesText {
+    display: inline-block;
+  }
+
+/* make the background image cover the full body */
+.movieContainer {
+  min-height: 100vh;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.movieContainerMovbtn {
+  margin: 0;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loadingIcon {
+    font-size: 40px; /* İkon boyutunu isteğinize göre ayarlayabilirsiniz */
+  }
+
+@media (max-width: 768px) {
+  .movieContainer {
+    position: sticky;
+  }
+
+  .homelink {
+    font-size: 15px;
+  }
+}
