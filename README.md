@@ -1,14 +1,7 @@
-<h1 align="center">
-  <a href="">
-    <img src="/src/assets/movies.svg" alt="Project Banner Image">
-  </a>
-</h1>
-
 # Movie Site Project
+![Application Screenshot 1](src/assets/1.png)
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+![Application Screenshot 2](src/assets/2.png)
 
 ## Getting Started with the Project
 
