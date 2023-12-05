@@ -52,7 +52,7 @@
   }
   
   /* media query for tablet */
-  @media (min-width: 511px) and (max-width: 824px) {
+  @media (min-width: 723px) and (max-width: 824px) {
     .moviePoster {
       width: 300px;
       margin-left: 15px;

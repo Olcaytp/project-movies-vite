@@ -9,11 +9,13 @@ import { MovieCard } from "../MovieCard/MovieCard.jsx";
 import styles from "./MovieDetails.module.css";
 
 export const MovieDetails = () => {
-  const { id } = useParams(null);
   const api_key = import.meta.env.VITE_API_KEY;
-
+  const { id } = useParams(null);
+  
   const OurMovieDetailAPI = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=en-US`;
+
   const [movie, setMovie] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -26,7 +28,7 @@ export const MovieDetails = () => {
         setMovie(json);
         console.log("Updated movie state:", movie);
       } catch (error) {
-        console.log("Error fetching data:", error);
+        setError(error.message);
       }
     };
 
@@ -40,6 +42,7 @@ export const MovieDetails = () => {
       </div>
     );
   }
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <>
@@ -51,7 +54,7 @@ export const MovieDetails = () => {
       >
         <div className={styles.movieContainerMovbtn}>
           <p className={styles.homelink}>
-            <NavLink to="/">
+            <NavLink to="/" className={styles.navlink}>
               <AiOutlineArrowLeft className={styles.backArrow} />
               <span className={styles.moviesText}>Movies</span>
             </NavLink>

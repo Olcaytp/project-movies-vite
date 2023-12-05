@@ -56,6 +56,22 @@
     height: 100px;
 }
 
+.navlink {
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.578));
+  font-weight: bold;
+  max-width: fit-content;
+  margin: 1em;
+  background-color: none;
+  font-weight: 700;
+  left: 50px;
+  top: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
 .loadingIcon {
     font-size: 40px; /* İkon boyutunu isteğinize göre ayarlayabilirsiniz */
   }

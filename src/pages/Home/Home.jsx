@@ -11,27 +11,38 @@ export const Home = () => {
 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [listType, setListType] = useState("popular"); // New state for list type
+  const [loadedImages, setLoadedImages] = useState([]); // Initialize loadedImages state
 
-  const OurMovieAPI = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`;
+  // Object mapping list types to their API endpoints
+  const apiEndpoints = {
+    popular: "popular",
+    now_playing: "now_playing",
+    top_rated: "top_rated",
+    upcoming: "upcoming",
+  };
 
   useEffect(() => {
     const fetchMoviesList = async () => {
       try {
-        const response = await fetch(OurMovieAPI);
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${apiEndpoints[listType]}?api_key=${api_key}&language=en-US&page=1`
+        );
         if (!response.ok) {
           throw new Error("Network Reponse Error");
         }
         const json = await response.json();
         setMovies(json);
-        setLoading(false);
         console.log(json);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.log("Error fetching data:", error);
       }
     };
 
     fetchMoviesList();
-  }, []);
+  }, [api_key, listType]); // Adding listType as a dependency
 
   //This will show "Loading..." to the user while data is being fetched from the API.
   if (loading) {
@@ -44,6 +55,21 @@ export const Home = () => {
 
   return (
     <div>
+    
+    <div className={styles.Header}>
+        <h1 className="Logo">Movies To Watch</h1>
+        <select
+          value={listType}
+          onChange={(e) => setListType(e.target.value)}
+          className={styles.MovieListDropdown}
+        >
+          <option value="popular">Popular</option>
+          <option value="now_playing">Now Playing</option>
+          <option value="top_rated">Top Rated</option>
+          <option value="upcoming">Upcoming</option>
+        </select>
+      </div>
+
       <div className={styles.movielistContainer}>
         {movies &&
           movies.results &&
